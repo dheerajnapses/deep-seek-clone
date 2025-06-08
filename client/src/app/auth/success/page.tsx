@@ -20,7 +20,7 @@ export default function AuthCallback() {
     } else {
       router.push("/sign-in")
     }
-  }, [token, loadUser])
+  }, [token, loadUser, router])
 
   return (
     <div className="flex h-screen items-center justify-center">
