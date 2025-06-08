@@ -7,6 +7,7 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const userCookie = req.cookies.get('auth_token');
+  console.log(userCookie)
 
   // Check if user has a cookie and trying to access a public route like sign-in or sign-up
   if ((pathname === '/sign-in' || pathname === '/sign-up') && userCookie) {
