@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
     res.cookie("auth_token",token,{
-      httpOnly: true,
+      httpOnly: false,
       sameSite:"none",
       secure:true
   })
@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
 
     res.cookie("auth_token",token,{
-      httpOnly: true,
+      httpOnly: false,
       sameSite:"none",
       secure:true
   })
@@ -124,7 +124,7 @@ exports.googleCallback = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign({ id: req.user._id, email: req.user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
     res.cookie("auth_token",token,{
-      httpOnly: true,
+      httpOnly: false,
       sameSite:"none",
       secure:true
   })
