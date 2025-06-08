@@ -28,13 +28,12 @@ exports.register = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
-    res.cookie("auth_token", token, {
+    res.cookie("auth_token",token,{
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      domain: ".myapp.com", // ✅ this is your real shared domain
-      path: "/",
-    });
+      sameSite:"none",
+      secure:true
+  })
+
     res.status(201).json({
       user: {
         id: user._id,
@@ -75,13 +74,11 @@ exports.login = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
 
-    res.cookie("auth_token", token, {
+    res.cookie("auth_token",token,{
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      domain: ".myapp.com", // ✅ this is your real shared domain
-      path: "/",
-    });
+      sameSite:"none",
+      secure:true
+  })
 
 
     res.json({
@@ -126,13 +123,11 @@ exports.googleCallback = async (req, res) => {
   try {
     // Generate JWT token
     const token = jwt.sign({ id: req.user._id, email: req.user.email }, process.env.JWT_SECRET, { expiresIn: "1d" })
-    res.cookie("auth_token", token, {
+    res.cookie("auth_token",token,{
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      domain: ".myapp.com", // ✅ this is your real shared domain
-      path: "/",
-    });
+      sameSite:"none",
+      secure:true
+  })
     // Redirect to frontend with token
     res.redirect(`${process.env.FRONTEND_URL}/auth/success?token=${token}`)
   } catch (error) {
