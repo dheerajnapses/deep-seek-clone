@@ -1,6 +1,12 @@
 import Conversations from "./Conversations";
 
-export default async function ChatPage({ params }: { params: { id: string } }) {
-  const { id } = params; 
+interface ChatPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function ChatPage({ params }: ChatPageProps) {
+  const { id } = params;
   return <Conversations id={id} />;
 }
